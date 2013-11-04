@@ -9,8 +9,8 @@ Copy a selected value to the clipboard.
 Installation
 -----------------
 
-1. copy ``world.lua`` and ``world`` directory to ICEBERG_CONF_PATH/luamodule
-2. append ``require("world")`` line before end of the ``config.lua``
+1. copy ``worldtime.lua`` and ``worldtime`` directory to ICEBERG_CONF_PATH/luamodule
+2. append ``require("worldtime")`` line before end of the ``config.lua``
 
 Acknowledgements
 -------------------
