@@ -17,7 +17,7 @@ local function dow(y, m, d) -- {{{
 end
 -- }}}
 
-local function date_nth_dow(year, monzath, d_ow, nth_week) -- {{{
+local function date_nth_dow(year, month, d_ow, nth_week) -- {{{
   -- get nth DOW day in the year-month
   if type(d_ow) == "string" then
     d_ow = dow_names[d_ow]
