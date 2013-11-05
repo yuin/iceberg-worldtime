@@ -166,7 +166,7 @@ commands["worldtime"] = {
       if dst then
         description = string.format("%s %s", description, "DST")
       end
-      table.insert(candidates, { value = datetime, description = description, icon=ibs.join_path(script_data_dir, data.icon)})
+      table.insert(candidates, { value = name, description = description, icon=ibs.join_path(script_data_dir, data.icon)})
     end
     return candidates
   end,
