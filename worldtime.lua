@@ -17,13 +17,15 @@ local function dow(y, m, d) -- {{{
 end
 -- }}}
 
-local function date_nth_dow(year, month, d_ow, nth_week) -- {{{
+local function date_nth_dow(year, monzath, d_ow, nth_week) -- {{{
   -- get nth DOW day in the year-month
   if type(d_ow) == "string" then
     d_ow = dow_names[d_ow]
   end
 
+  local is_last = false
   if nth_week == "last" then
+    is_last = true
     nth_week = 1
     if month == 12 then
       month = 1
@@ -40,7 +42,7 @@ local function date_nth_dow(year, month, d_ow, nth_week) -- {{{
     d = d + 1
   end
   d = d + (nth_week-1)*7;
-  if nth_week == "last" then
+  if is_last then
     d = tonumber(os.date("%d", os.time({year=year,month=month,day=d}) - (3600*7)))
   end
   
