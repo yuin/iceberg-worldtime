@@ -123,7 +123,7 @@ end
 local cities = {
   {name="New York, New York, United States",     tz="EST", dst_start={3,2,"Sun",2}, dst_end={11,1,"Sun",2}, icon = "us.png"},
   {name="Los Angeles, California, United States",tz="PST", dst_start={3,2,"Sun",2}, dst_end={11,1,"Sun",2}, icon = "us.png"},
-  {name="Vancouver, British Columbia, Canada",   tz="PST", dst_start={3,2,"Sun",2}, dst_end={11,1,"Sun",2}, icon = "us.png"},
+  {name="Vancouver, British Columbia, Canada",   tz="PST", dst_start={3,2,"Sun",2}, dst_end={11,1,"Sun",2}, icon = "ca.png"},
   {name="Rio de Janeiro, Rio de Janeiro, Brazil",tz="BRT", dst_start={10,3,"Sun",0},dst_end={2,3,"Sun",0},  icon = "br.png"},
   {name="Honolulu, Hawaii, United States",       tz="HAST",dst_start=nil,           dst_end=nil,            icon = "us.png"},
   {name="Sydney, New South Wales, Australia",    tz="AEST",dst_start={10,1,"Sun",2},dst_end={4,1,"Sun",3},  icon = "au.png"},
@@ -156,8 +156,13 @@ commands["worldtime"] = {
         local_value = local_value + 3600
         dst = true
       end
-      local datetime = string.format("%s, %s", os.date("%Y-%m-%d %H:%M:%S", local_value), ibs.regex_split(",", Regex.NONE, data["name"])[1])
-      local description = data["name"]
+      local datetime = os.date("%Y-%m-%d %H:%M:%S", local_value)
+      local name = string.format("%s, %s",datetime , ibs.regex_split(",", Regex.NONE, data["name"])[1])
+      local offset_h = timezones[data["tz"]]/3600
+      if dst then
+        offset_h = offset_h + 1
+      end
+      local description = string.format("%s UTC%s%s", data["name"], offset_h>0 and "+" or "", tostring(offset_h))
       if dst then
         description = string.format("%s %s", description, "DST")
       end
