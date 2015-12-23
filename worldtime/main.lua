@@ -1,6 +1,6 @@
 local ibs = require("icebergsupport")
-local script_path = ibs.join_path(ibs.CONFIG_DIR, "luamodule")
-local script_data_dir = ibs.join_path(script_path, "worldtime")
+local script_path = ibs.join_path(ibs.CONFIG_DIR, "plugins", "worldtime")
+local script_data_dir = script_path
 
 --
 -- icons taken from http://deleket.deviantart.com/art/Flag-Icons-157982523
