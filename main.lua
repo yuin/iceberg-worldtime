@@ -1,6 +1,11 @@
 local ibs = require("icebergsupport")
-local script_path = ibs.join_path(ibs.CONFIG_DIR, "plugins", "worldtime")
+local script_path = ibs.dirname(debug.getinfo(1).source:sub(2,-1))
 local script_data_dir = script_path
+
+local config = {
+  name = "worldtime"
+}
+ibs.merge_table(config, worldtime_config or {})
 
 --
 -- icons taken from http://deleket.deviantart.com/art/Flag-Icons-157982523
@@ -138,7 +143,7 @@ local cities = {
   {name="London, England, United Kingdom",tz="GMT", dst_start={3,"last","Sun",1},dst_end={10,"last","Sun",1},  icon = "uk.png"}
 }
 
-commands["worldtime"] = { 
+commands[config.name] = { 
   path = function(args) 
     if #args == 0 then return end
     ibs.set_clipboard(args[1])

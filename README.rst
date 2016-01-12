@@ -8,7 +8,7 @@ Copy a selected value to the clipboard.
 
 Installation
 -----------------
-Just copy ``worldtime`` directory into the iceberg plugin directory.
+Just copy this project into the iceberg plugin directory.
 
 Acknowledgements
 -------------------
